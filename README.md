@@ -61,11 +61,6 @@ ContextSwitch receives customer messages through Twilio WhatsApp webhooks and re
 
 ![Twilio WhatsApp demo](docs/screenshots/Twilio%20WhatsApp%20demo.jpg)
 
-### Real Twilio WhatsApp Integration
-
-ContextSwitch receives customer messages through Twilio WhatsApp webhooks and returns AI-generated responses using backend-validated order data.
-
-![Twilio WhatsApp demo](docs/screenshots/whatsapp-demo.png)
 ## Key Features
 
 - **Multichannel Support** — Customers can interact through WhatsApp and voice using Twilio.
