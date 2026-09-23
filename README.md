@@ -1,13 +1,65 @@
 # ContextSwitch
 
-ContextSwitch is a context-aware multichannel AI customer support system that allows customers to start a conversation through WhatsApp, switch to voice, and escalate to a human support agent without repeating their context.
-## Overview
+### Context-Aware Multichannel AI Customer Support
 
-Customer support conversations often become fragmented when customers switch between communication channels or need help from a human agent.
+ContextSwitch is a multichannel AI support system that allows customers to start a conversation on WhatsApp, continue through voice, and escalate to a human agent — without repeating their context.
 
-ContextSwitch solves this by maintaining shared conversation context across WhatsApp and voice interactions. The system uses AI to understand customer requests, perform backend actions such as checking order status, and escalate conversations to human agents when needed.
+Built with **Twilio WhatsApp & Voice, Node.js, Express, Groq, SQLite, and REST APIs**.
 
-The project combines Twilio, Node.js, Express, Groq, SQLite, REST APIs, and a web-based agent console into a single support workflow.
+> **Core idea:** The conversation follows the customer, not the channel.
+
+## Live Demo
+
+**Agent Console:**  
+https://contextswitch-ai.onrender.com/agent.html
+
+> The application is deployed on Render's free tier and may take a few seconds to wake up after inactivity.
+
+## What ContextSwitch Solves
+
+Customer support conversations often become fragmented when customers switch communication channels or move from an AI assistant to a human agent.
+
+ContextSwitch maintains shared conversation and order context across those transitions.
+
+A customer can:
+
+**WhatsApp → Voice → Human Agent**
+
+while the system preserves information such as:
+
+- conversation history
+- detected intent
+- referenced order
+- order status
+- payment status
+- handoff state
+
+The human agent therefore receives the existing context instead of starting the conversation from zero.
+## Demo
+
+### AI-to-Human Handoff
+
+A customer requesting human assistance is automatically added to the agent handoff queue.
+
+![Pending human handoff](docs/screenshots/pending-handoff.png)
+
+### Context-Preserving Escalation
+
+The agent receives the customer's previous messages and relevant order context before taking over the conversation.
+
+![Conversation context](docs/screenshots/conversation-context.png)
+
+### Agent Takeover
+
+Pending handoffs can be taken over by an agent and moved into an active support session.
+
+![Active conversation](docs/screenshots/active-conversation.png)
+
+### Real Twilio WhatsApp Integration
+
+ContextSwitch receives customer messages through Twilio WhatsApp webhooks and returns AI-generated responses using backend-validated order data.
+
+![Twilio WhatsApp demo](docs/screenshots/whatsapp-demo.png)
 ## Key Features
 
 - **Multichannel Support** — Customers can interact through WhatsApp and voice using Twilio.
@@ -92,6 +144,25 @@ flowchart TB
 
     AGENT -->|Take Over / Resolve| API
 ```
+## Engineering Decisions
+
+### LLMs interpret requests — they don't control application state
+
+ContextSwitch uses the LLM for intent classification and natural-language response generation, while order operations and handoff state transitions remain controlled by deterministic backend logic.
+
+This prevents the model from directly modifying application state or bypassing business rules.
+
+### Shared identity enables cross-channel context
+
+WhatsApp and voice identifiers are normalized into a common customer identity. This allows conversation history and order context to be retrieved even when the customer changes communication channels.
+
+### Human handoff is modeled as a state machine
+
+Handoffs follow a controlled lifecycle:
+
+Pending → Active → Resolved
+
+Invalid state transitions are rejected by the backend.
 
 ## How It Works
 
@@ -428,4 +499,4 @@ Potential extensions for ContextSwitch include:
 - **Agent response support** directly from the Agent Console.
 - **Analytics and reporting** for conversation volume, handoff rates, and resolution patterns.
 - **Production database deployment** using a managed database instead of local SQLite.
-- **Deployment to a cloud platform** for publicly accessible demonstrations.
+- **Persistent production database** using PostgreSQL or another managed database instead of ephemeral SQLite storage.
