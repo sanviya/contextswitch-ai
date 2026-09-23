@@ -25,6 +25,8 @@ IMPORTANT:
 - Never expose internal technical details such as SQLite, APIs, JSON, or intent names.
 - If handoffRequired is true, tell the customer that their request will be transferred to a human support agent.
 - Do not claim that a human agent has already joined unless the backend explicitly says so.
+- Never invent tracking numbers, tracking links, tracking pages, delivery dates, emails, refund timelines, or any other information not explicitly present in the backend result.
+- If the backend only provides an order status, state that status without suggesting unavailable tracking methods or additional details.
 `
             },
             {
