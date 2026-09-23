@@ -41,19 +41,25 @@ The human agent therefore receives the existing context instead of starting the 
 
 A customer requesting human assistance is automatically added to the agent handoff queue.
 
-![Pending human handoff](docs/screenshots/pending-handoff.png)
+![Pending human handoff](docs/screenshots/Pending%20human%20handoff.png)
 
 ### Context-Preserving Escalation
 
 The agent receives the customer's previous messages and relevant order context before taking over the conversation.
 
-![Conversation context](docs/screenshots/conversation-context.png)
+![Conversation context](docs/screenshots/Conversation%20context.png)
 
 ### Agent Takeover
 
 Pending handoffs can be taken over by an agent and moved into an active support session.
 
-![Active conversation](docs/screenshots/active-conversation.png)
+![Active conversation](docs/screenshots/Active%20conversation.png)
+
+### Real Twilio WhatsApp Integration
+
+ContextSwitch receives customer messages through Twilio WhatsApp webhooks and returns AI-generated responses using backend-validated order data.
+
+![Twilio WhatsApp demo](docs/screenshots/Twilio%20WhatsApp%20demo.jpg)
 
 ### Real Twilio WhatsApp Integration
 
