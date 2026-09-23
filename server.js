@@ -105,7 +105,7 @@ app.post("/voice", (req, res) => {
 <Response>
     <Gather
         input="speech"
-        action="https://scant-cloning-crept.ngrok-free.dev/voice-process"
+        action="https://contextswitch-ai.onrender.com/voice-process"
         method="POST"
         speechTimeout="auto"
     >
@@ -135,7 +135,7 @@ app.post("/voice-process", async (req, res) => {
 <Response>
     <Gather
         input="speech"
-        action="https://scant-cloning-crept.ngrok-free.dev/voice-process"
+        action="https://contextswitch-ai.onrender.com/voice-process"
         method="POST"
         speechTimeout="auto"
     >
