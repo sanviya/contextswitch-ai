@@ -516,9 +516,18 @@
   .msg-top svg{ width:11px; height:11px; }
   .msg-text{ font-size:14px; line-height:1.45; color:var(--text); margin-bottom:6px; }
   .msg-foot{
-    display:flex; justify-content:space-between; align-items:center;
-    font-size:11px; color:var(--text-faint);
-  }
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  font-size:11px;
+  color:var(--text-faint);
+}
+
+.msg-foot > span:last-child{
+  white-space:nowrap;
+  flex-shrink:0;
+}
   .msg-foot .intent{ font-family:var(--font-mono); }
 
   .context-block{
@@ -666,18 +675,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 8l4 4-4 4M3 12h18"/></svg>
       <span>Handoffs</span>
     </div>
-    <div class="nav-item" data-page="customers">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-4 4-6 7-6s5.8 2 7 6"/></svg>
-      <span>Customers</span>
-      <span class="soon">soon</span>
-    </div>
-    <div class="nav-item" data-page="analytics">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg>
-      <span>Analytics</span>
-      <span class="soon">soon</span>
-    </div>
-
-    <div class="sidebar-foot">v0.1 · hackathon build</div>
+    <div class="sidebar-foot">ContextSwitch · Agent Console</div>
   </aside>
 
   <main class="main">
